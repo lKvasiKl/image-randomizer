@@ -12,10 +12,12 @@ const imgSrcArray = [
     'url(./images/Slides-about-company-04.jpg)',
 ];
 
-const button = document.querySelector("button");
-const div = document.querySelector("div");
+const button = document.querySelector("section.image-generator .button.image-generator__button");
+const div = document.querySelector("section.image-generator div.image-generator__image-container");
+
+button.addEventListener("click", () => generateRandomImage());
 
 function generateRandomImage() {
-    let iteration = Math.floor(Math.random() * imgSrcArray.length);
+    const iteration = Math.floor(Math.random() * imgSrcArray.length);
     div.style.backgroundImage = imgSrcArray[iteration];
 };
