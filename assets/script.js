@@ -12,12 +12,25 @@ const imgSrcArray = [
     'url(./images/Slides-about-company-04.jpg)',
 ];
 
-const button = document.querySelector("section.image-generator .button.image-generator__button");
-const div = document.querySelector("section.image-generator div.image-generator__image-container");
+const page = document.querySelector(".page");
 
-button.addEventListener("click", () => generateRandomImage());
+page.addEventListener("click", handleClick)
 
-function generateRandomImage() {
+function handleClick(e) {
+    const imageGenerationButton = e.target.closest(".image-generator__button");
+
+    if (!imageGenerationButton) return;
+
+    generateRandomImage(e);
+}
+
+function generateRandomImage(e) {
+    const imageGenerationSection = e.target.closest(".page__image-generator");
+
+    if (!imageGenerationSection) return;
+
+    const imageContainer = imageGenerationSection.querySelector(".image-generator__image-container");
     const iteration = Math.floor(Math.random() * imgSrcArray.length);
-    div.style.backgroundImage = imgSrcArray[iteration];
+
+    imageContainer.style.backgroundImage = imgSrcArray[iteration];
 };
